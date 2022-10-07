@@ -22,6 +22,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
         :validatable
 
+  has_many :product_lists, dependent: :destroy
+
   validates :first_name, presence: true
 
   private
