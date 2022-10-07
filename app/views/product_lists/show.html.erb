@@ -1,6 +1,12 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @product_list %>
+
+<%= render "product_items/form", product_list: @product_list, product_item: @product_item %>
+
+<div id="product_items">
+  <% @product_list.items.each do |item| %>
+    <%= render item if item.persisted? %>
+  <% end %>
+</div>
 
 <div>
   <%= link_to "Edit this product list", edit_product_list_path(@product_list) %> |

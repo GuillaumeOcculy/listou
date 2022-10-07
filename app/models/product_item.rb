@@ -3,7 +3,7 @@
 # Table name: product_items
 #
 #  id              :uuid             not null, primary key
-#  category        :string           not null
+#  category        :string           default("other"), not null
 #  name            :string           not null
 #  position        :integer          not null
 #  slug            :string           not null

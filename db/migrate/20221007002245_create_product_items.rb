@@ -7,7 +7,7 @@ class CreateProductItems < ActiveRecord::Migration[7.0]
       t.string :name, null: false
       t.string :slug, null: false, index: { unique: true }
       t.string :status, default: :active, null: false
-      t.string :category, null: false
+      t.string :category, default: 'other', null: false
       t.integer :position, null: false
 
       t.timestamps

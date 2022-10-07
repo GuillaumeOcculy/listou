@@ -1,19 +1,6 @@
 class ProductItemsController < ApplicationController
+  before_action :set_product_list
   before_action :set_product_item, only: %i[ show edit update destroy ]
-
-  # GET /product_items or /product_items.json
-  def index
-    @product_items = ProductItem.all
-  end
-
-  # GET /product_items/1 or /product_items/1.json
-  def show
-  end
-
-  # GET /product_items/new
-  def new
-    @product_item = ProductItem.new
-  end
 
   # GET /product_items/1/edit
   def edit
@@ -21,15 +8,14 @@ class ProductItemsController < ApplicationController
 
   # POST /product_items or /product_items.json
   def create
-    @product_item = ProductItem.new(product_item_params)
+    @product_item = @product_list.items.new(product_item_params)
+    @product_item.user = current_user
 
     respond_to do |format|
       if @product_item.save
-        format.html { redirect_to product_list_product_item_url(@product_item), notice: "Product item was successfully created." }
-        format.json { render :show, status: :created, location: @product_item }
+        format.html { redirect_to product_list_url(@product_list), notice: "Product item was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @product_item.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -38,11 +24,9 @@ class ProductItemsController < ApplicationController
   def update
     respond_to do |format|
       if @product_item.update(product_item_params)
-        format.html { redirect_to product_list_product_item_url(@product_item), notice: "Product item was successfully updated." }
-        format.json { render :show, status: :ok, location: @product_item }
+        format.html { redirect_to product_list_url(@product_list), notice: "Product item was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @product_item.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -52,19 +36,23 @@ class ProductItemsController < ApplicationController
     @product_item.destroy
 
     respond_to do |format|
-      format.html { redirect_to product_items_url, notice: "Product item was successfully destroyed." }
-      format.json { head :no_content }
+      format.html { redirect_to product_list_url(@product_list), notice: "Product item was successfully destroyed." }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_product_list
+      @product_list = ProductList.find(params[:product_list_id])
+    end
+
+    # Use callbacks to share common setup or constraints between actions.
     def set_product_item
-      @product_item = ProductItem.find(params[:id])
+      @product_item = @product_list.items.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def product_item_params
-      params.require(:product_item).permit(:product_list_id, :user_id, :name, :slug, :status, :position, :category)
+      params.require(:product_item).permit(:product_list_id, :user_id, :name, :slug, :status, :position)
     end
 end

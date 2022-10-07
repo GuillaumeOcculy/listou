@@ -15,7 +15,7 @@ class ProductList < ApplicationRecord
   friendly_id :name, use: :slugged
 
   belongs_to :user
-  has_many :items, -> { order(:position) }, class_name: "ProductItem", dependent: :destroy
+  has_many :items, -> { order(position: :desc) }, class_name: "ProductItem", dependent: :destroy
 
   validates :name, presence: true, uniqueness: { case_sensitive: false, scope: :user_id }
 

@@ -1,22 +1,3 @@
 <div id="<%= dom_id product_list %>">
-  <p>
-    <strong>User:</strong>
-    <%= product_list.user_id %>
-  </p>
-
-  <p>
-    <strong>Name:</strong>
-    <%= product_list.name %>
-  </p>
-
-  <p>
-    <strong>Slug:</strong>
-    <%= product_list.slug %>
-  </p>
-
-  <p>
-    <strong>Favorited:</strong>
-    <%= product_list.favorited %>
-  </p>
-
+  <p><%= link_to product_list.name, product_list %></p>
 </div>

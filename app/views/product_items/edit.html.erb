@@ -1,10 +1,9 @@
 <h1>Editing product item</h1>
 
-<%= render "form", product_item: @product_item %>
+<%= render "form", product_list: @product_list, product_item: @product_item %>
 
 <br>
 
 <div>
-  <%= link_to "Show this product item", @product_item %> |
-  <%= link_to "Back to product items", product_items_path %>
+  <%= link_to "Back to product items", product_list_path(@product_list) %>
 </div>

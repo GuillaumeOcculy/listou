@@ -8,6 +8,7 @@ class ProductListsController < ApplicationController
 
   # GET /product_lists/1 or /product_lists/1.json
   def show
+    @product_item = @product_list.items.new
   end
 
   # GET /product_lists/new
@@ -26,10 +27,9 @@ class ProductListsController < ApplicationController
     respond_to do |format|
       if @product_list.save
         format.html { redirect_to product_list_url(@product_list), notice: "Product list was successfully created." }
-        format.json { render :show, status: :created, location: @product_list }
       else
+        @product_item = @product_list.items.new
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @product_list.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -39,10 +39,8 @@ class ProductListsController < ApplicationController
     respond_to do |format|
       if @product_list.update(product_list_params)
         format.html { redirect_to product_list_url(@product_list), notice: "Product list was successfully updated." }
-        format.json { render :show, status: :ok, location: @product_list }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @product_list.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -53,7 +51,6 @@ class ProductListsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to product_lists_url, notice: "Product list was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 
