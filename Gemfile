@@ -51,6 +51,7 @@ gem "bootsnap", require: false
 gem 'devise', "~> 4.8.1"
 gem 'friendly_id', '~> 5.4.0'
 gem 'acts_as_list', "~> 1.0.4"
+gem 'bootstrap', '~> 5.2.1'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
