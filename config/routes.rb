@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  resources :product_items
   root "product_lists#index"
 
-  resources :product_lists
+  resources :product_lists do
+    resources :product_items, except: [:index]
+  end
 
   devise_for :users, controllers: {
     confirmations: "users/confirmations",
