@@ -1,28 +1,28 @@
-<h2>Sign up</h2>
+<h2>Inscription</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, required: true %>
+  <div class="mb-3">
+    <%= f.label :first_name, class: 'form-label' %><br />
+    <%= f.text_field :first_name, autofocus: true, required: true, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email", required: true %>
+  <div class="mb-3">
+    <%= f.label :email, class: 'form-label' %><br />
+    <%= f.email_field :email, autocomplete: "email", required: true, class: 'form-control' %>
+    <div id="emailHelp" class="form-text">Nous ne partagerons jamais votre e-mail avec quelqu'un d'autre.</div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
+  <div class="mb-3">
+    <%= f.label :password, class: 'form-label' %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <em>(<%= @minimum_password_length %> caractères minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", required: true %>
+    <%= f.password_field :password, autocomplete: "new-password", required: true, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "S'inscrire", class: "btn btn-primary" %>
   </div>
 <% end %>
 
