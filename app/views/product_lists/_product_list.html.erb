@@ -1,3 +1,5 @@
-<div id="<%= dom_id product_list %>">
-  <p><%= link_to product_list.name, product_list %></p>
+<div class="card" id="<%= dom_id product_list %>">
+  <div class="card-body">
+    <%= link_to product_list.name, product_list, class: 'link-primary text-decoration-none' %>
+  </div>
 </div>
