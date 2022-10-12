@@ -1,0 +1,15 @@
+fr:
+  activerecord:
+    models:
+      product_list:
+        one: Liste
+        other: Listes
+    attributes:
+      product_list:
+        name: Nom de la liste
+        favorited: Favoris
+  helpers:
+    submit:
+      create: Créer une %{model}
+      submit: Enregistrer cette %{model}
+      update: Modifier cette %{model}
