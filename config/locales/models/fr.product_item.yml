@@ -1,0 +1,14 @@
+fr:
+  activerecord:
+    models:
+      product_item:
+        one: Produit
+        other: Produits
+    attributes:
+      product_item:
+        name: Nom du produit
+  helpers:
+    submit:
+      create: Ajouter un %{model}
+      submit: Enregistrer ce %{model}
+      update: Modifier ce %{model}

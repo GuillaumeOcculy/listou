@@ -1,3 +1,13 @@
 <div id="<%= dom_id product_item %>">
-  <p><%= link_to product_item.name, [:edit, product_item.list, product_item] %></p>
+  <div class="row">
+    <div class="col-6">
+      <%= product_item.name %>
+    </div>
+    <div class="col-3">
+      <%= link_to "Modifier", [:edit, product_item.list, product_item], class: "btn btn-success" %>
+    </div>
+    <div class="col-3">
+      <%= button_to "Supprimer", [product_item.list, product_item], method: :delete, class: 'btn btn-danger' %>
+    </div>
+  </div>
 </div>
