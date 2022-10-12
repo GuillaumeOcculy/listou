@@ -1,15 +1,16 @@
-<%= render @product_list %>
+<div class="text-center">
+  <%= link_to "Retour", product_lists_path, class: 'text-decoration-none' %>
+  <h1><%= @product_list.name %></h1>
+</div>
+
+<br>
 
 <%= render "product_items/form", product_list: @product_list, product_item: @product_item %>
 
+<br>
+
 <div id="product_items">
-  <% @product_list.items.each do |item| %>
+  <% @product_list.items.includes(:list).each do |item| %>
     <%= render item if item.persisted? %>
   <% end %>
-</div>
-
-<div>
-  <%= link_to "Retour", product_lists_path %>
-
-  <%= button_to "Supprimer", @product_list, method: :delete %>
 </div>
