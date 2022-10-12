@@ -23,5 +23,8 @@ class ProductItem < ApplicationRecord
 
   validates :name, presence: true, uniqueness: { case_sensitive: false, scope: :user_id }
 
-  enum status: { active: "active" }
+  enum status: {
+    active: "active",
+    done: "done"
+  }
 end
