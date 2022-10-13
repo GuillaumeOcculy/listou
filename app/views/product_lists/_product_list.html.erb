@@ -1,11 +1,22 @@
-<div class="card" id="<%= dom_id product_list %>">
-  <div class="card-body">
-    <h5 class="card-title text-center">
-      <%= link_to product_list.name, product_list, class: 'link-primary text-decoration-none' %>
-    </h5>
+<%= turbo_frame_tag product_list do %>
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title text-center">
+        <%= link_to product_list.name,
+                    product_list,
+                    class: 'link-primary text-decoration-none',
+                    data: {turbo_method: '_top' } %>
+      </h5>
+    </div>
+    <div class="card-body">
+      <%= link_to "Modifier",
+          [:edit, product_list],
+          class: "card-link btn btn-success" %>
+
+      <%= link_to "Supprimer",
+                  product_list,
+                  class: "card-link btn btn-danger",
+                  data: { turbo_method: :delete } %>
+    </div>
   </div>
-  <div class="card-body">
-    <%= link_to "Modifier", [:edit, product_list], class: "card-link btn btn-success" %>
-    <%= link_to "Supprimer", product_list, class: "card-link btn btn-danger", data: { turbo_method: :delete } %>
-  </div>
-</div>
+<% end %>

@@ -1,7 +1,8 @@
 <h1>Nouvelle liste</h1>
 
-<%= render "form", product_list: @product_list %>
-
+<%= turbo_frame_tag @product_list do %>
+  <%= render "form", product_list: @product_list %>
+<% end %>
 <br>
 
 <div>

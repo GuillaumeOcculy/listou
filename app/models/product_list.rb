@@ -20,4 +20,6 @@ class ProductList < ApplicationRecord
   validates :name, presence: true, uniqueness: { case_sensitive: false, scope: :user_id }
 
   scope :ordered, -> { order({ favorited: :desc }, :name) }
+
+  broadcasts_to ->(product_list) { [product_list.user, "product_lists"] }, inserts_by: :prepend
 end
