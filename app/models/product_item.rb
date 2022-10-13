@@ -27,4 +27,6 @@ class ProductItem < ApplicationRecord
     active: "active",
     done: "done"
   }
+
+  broadcasts_to ->(product_item) { [product_item.list, "product_items"] }, inserts_by: :prepend
 end

@@ -1,3 +1,5 @@
+<%= turbo_stream_from @product_list, "product_items" %>
+
 <div class="text-center">
   <%= link_to "Retour", product_lists_path, class: 'text-decoration-none' %>
   <h1><%= @product_list.name %></h1>
@@ -9,8 +11,8 @@
 
 <br>
 
-<div id="product_items">
+<%= turbo_frame_tag "product_items" do %>
   <% @product_list.items.includes(:list).each do |item| %>
     <%= render item if item.persisted? %>
   <% end %>
-</div>
+<% end %>

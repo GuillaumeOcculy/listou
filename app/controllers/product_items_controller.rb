@@ -13,6 +13,7 @@ class ProductItemsController < ApplicationController
 
     respond_to do |format|
       if @product_item.save
+        format.turbo_stream
         format.html { redirect_to product_list_url(@product_list), notice: "Product item was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -24,6 +25,7 @@ class ProductItemsController < ApplicationController
   def update
     respond_to do |format|
       if @product_item.update(product_item_params)
+        format.turbo_stream
         format.html { redirect_to product_list_url(@product_list), notice: "Product item was successfully updated." }
       else
         format.html { render :edit, status: :unprocessable_entity }
