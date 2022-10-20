@@ -1,6 +1,6 @@
 class ProductItemsController < ApplicationController
   before_action :set_product_list
-  before_action :set_product_item, only: %i[ show edit update destroy ]
+  before_action :set_product_item, only: %i[ show edit update destroy complete uncomplete]
 
   # GET /product_items/1/edit
   def edit
@@ -39,6 +39,28 @@ class ProductItemsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to product_list_url(@product_list), notice: "Product item was successfully destroyed." }
+    end
+  end
+
+  def complete
+    respond_to do |format|
+      if @product_item.completed!
+        format.turbo_stream
+        format.html { redirect_to product_list_url(@product_list), notice: "Product item was successfully updated." }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def uncomplete
+    respond_to do |format|
+      if @product_item.active!
+        format.turbo_stream
+        format.html { redirect_to product_list_url(@product_list), notice: "Product item was successfully updated." }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+      end
     end
   end
 

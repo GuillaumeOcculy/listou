@@ -25,7 +25,8 @@ class ProductItem < ApplicationRecord
 
   enum status: {
     active: "active",
-    done: "done"
+    completed: "completed"
+  }
 
   enum category: {
     baby: 'baby',
