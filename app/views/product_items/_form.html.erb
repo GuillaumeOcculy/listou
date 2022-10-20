@@ -1,10 +1,15 @@
-<%= simple_form_for([product_list, product_item], wrapper: :inline_form, html: { class: "row row-cols-lg-auto g-3 align-items-center" }, wrapper_mappings: {
+<div class="mb-3">
+  <%= simple_form_for([product_list, product_item], wrapper: :inline_form, html: { class: "row row-cols-lg-auto g-3 align-items-center" }, wrapper_mappings: {
     boolean: :inline_boolean
   }) do |f| %>
 
-  <%= f.input :name, autofocus: true %>
+  <%= f.input :name, autofocus: true, input_html: { autocomplete: 'off' } %>
+
+  <%= f.input :category, as: :select, collection: enum_options_for_select(ProductItem, :category) if product_item.persisted? %>
 
   <div class="col-12">
     <%= f.button :submit, class: "btn-primary" %>
   </div>
 <% end %>
+
+</div>

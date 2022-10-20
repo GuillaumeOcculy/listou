@@ -7,6 +7,31 @@ fr:
     attributes:
       product_item:
         name: Nom du produit
+      product_item/category:
+        fruit_and_vegetable: Fruit / Legume
+        fresh: Frais
+        game_and_toy: Jeux / Jouet
+        books_and_culture: Livre / Culture
+        high_tech: High-Tech
+        home_appliance: Électroménager
+        diy: Bricolage
+        home_and_decoration: Maison / Decoration
+        garden_and_landscaping: Jardin / Aménagement d'extérieur
+        fashion: Mode
+        sport_and_leisure: Sport / Loisir
+        video_game: Jeu Vidéo
+        other: Autre
+        meat_and_fish: Viande / Poisson
+        beverage: Boisson
+        baby: Bebe
+        pet: Animalerie
+        parapharmacy: Parapharmacie
+        frozen: Surgelé
+        bread: Pain
+        maintenance_and_cleaning: Entretien / Nettoyage
+        hygiene_and_beauty: Hygiène / Beauté
+        salty_grocery: Epicerie salée
+        sweet_grocery: Epicerie sucrée
   helpers:
     submit:
       create: Ajouter un %{model}

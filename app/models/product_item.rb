@@ -26,6 +26,32 @@ class ProductItem < ApplicationRecord
   enum status: {
     active: "active",
     done: "done"
+
+  enum category: {
+    baby: 'baby',
+    beverage: 'beverage',
+    books_and_culture: 'books_and_culture',
+    bread: 'bread',
+    diy: 'diy',
+    fashion: 'fashion',
+    fresh: 'fresh',
+    frozen: 'frozen',
+    fruit_and_vegetable: 'fruit_and_vegetable',
+    game_and_toy: 'game_and_toy',
+    garden_and_landscaping: 'garden_and_landscaping',
+    high_tech: 'high_tech',
+    home_and_decoration: 'home_and_decoration',
+    home_appliance: 'home_appliance',
+    hygiene_and_beauty: 'hygiene_and_beauty',
+    maintenance_and_cleaning: 'maintenance_and_cleaning',
+    meat_and_fish: 'meat_and_fish',
+    other: 'other',
+    parapharmacy: 'parapharmacy',
+    pet: 'pet',
+    salty_grocery: 'salty_grocery',
+    sport_and_leisure: 'sport_and_leisure',
+    sweet_grocery: 'sweet_grocery',
+    video_game: 'video_game',
   }
 
   broadcasts_to ->(product_item) { [product_item.list, "product_items"] }, inserts_by: :prepend
