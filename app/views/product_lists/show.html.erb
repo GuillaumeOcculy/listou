@@ -13,6 +13,6 @@
 
 <%= turbo_frame_tag "product_items" do %>
   <% @product_list.items.includes(:list).each do |item| %>
-    <%= render item if item.persisted? %>
+    <%= render item %>
   <% end %>
 <% end %>

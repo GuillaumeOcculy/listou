@@ -2,16 +2,17 @@
   <div class="card mb-3">
     <div class="card-body">
       <h5 class="card-title text-center">
-        <%= link_to product_list.name,
-                    product_list,
-                    class: 'link-primary text-decoration-none',
-                    data: {turbo_method: '_top' } %>
+        <%= product_list.name %>
       </h5>
     </div>
     <div class="card-body">
       <%= link_to "Modifier",
           [:edit, product_list],
           class: "card-link btn btn-success" %>
+
+      <%= link_to "Voir",
+                    product_list,
+                    class: 'card-link btn btn-primary' %>
 
       <%= link_to "Supprimer",
                   product_list,
